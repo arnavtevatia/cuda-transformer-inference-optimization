@@ -13,8 +13,10 @@ Four kernel variants are implemented, in increasing order of sophistication:
 | `hgemm_p4` | FP16 in, FP32 out | TensorCore (WMMA), mixed-precision accumulation |
 
 Across matrix sizes, the tiled and TensorCore kernels achieve **72-158x speedups**
-over the naive baseline, approaching or exceeding PyTorch's built-in `torch.mm` at
-larger sizes.
+over the naive baseline. At small sizes (256-512) the TensorCore kernels match or
+beat PyTorch's built-in `torch.mm`; at larger sizes cuBLAS pulls ahead.
+
+![Kernel performance vs matrix size](assets/benchmark.png)
 
 ## Structure
 
