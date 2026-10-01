@@ -3,5 +3,5 @@ dist/
 *.egg-info/
 __pycache__/
 *.so
-benchmark.png
+/benchmark.png
 .DS_Store
