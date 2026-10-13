@@ -78,9 +78,7 @@ These are the next steps for this project, roughly in order of expected payoff.
 - `wrapper.cpp`: PyTorch C++ extension bindings (pybind11)
 - `setup.py`: extension build configuration
 - `benchmark.py`: correctness check (relative squared error vs. a float64
-  reference) and a timing sweep across matrix sizes. Timing uses CUDA events,
-  warmup runs, and the median of repeated runs, and prints markdown tables of
-  runtimes and speedups.
+  reference) and a timing sweep across matrix sizes, with a log-scale plot
 
 ## Build and run
 
