@@ -55,6 +55,18 @@ products.
   accumulating in FP32 (p4), at essentially the same speed. This is the same
   trade-off that makes FP16/BF16 mixed-precision training and inference work.
 
+Accuracy at M = 3072, N = 4096, K = 5120 (relative squared error vs. a float64
+reference computed from the same inputs):
+
+| Kernel | Inputs | Accumulate | Relative squared error |
+|---|---|---|---|
+| `torch.mm` | FP32 | FP32 | 8.2e-13 |
+| `sgemm_p1` / `sgemm_p2` | FP32 | FP32 | 1.6e-12 |
+| `torch.mm` | FP16 | FP16 output | 4.3e-8 |
+| `hgemm_p1` / `hgemm_p2` | FP16 | FP16 | 1.1e-4 |
+| `hgemm_p3` | FP16 | FP16 | 1.4e-5 |
+| `hgemm_p4` | FP16 | FP32 | 6.8e-11 |
+
 ## What cuBLAS does that these kernels don't
 
 The gap to `torch.mm` at large sizes comes from optimizations these kernels
